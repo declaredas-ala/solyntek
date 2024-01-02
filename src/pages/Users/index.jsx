@@ -61,26 +61,25 @@ const UsersPage = () => {
                 Logout
               </Button>
             </div>
-            <table className="mt-5 w-full">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>phone</th>
-                </tr>
-              </thead>
-              <tbody>
-                {userData.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.namee}</td>
-                    <td>{user.email}</td>
-                    <td>{user.phone}</td>
-               
-                    
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <table className="mt-5 w-full border-collapse border border-blue_gray-300">
+  <thead>
+    <tr className="bg-light_blue-800 text-white">
+      <th className="py-2 px-4">Name</th>
+      <th className="py-2 px-4">Email</th>
+      <th className="py-2 px-4">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    {userData.map((user) => (
+      <tr key={user.id} className="border-t border-blue_gray-300">
+        <td className="py-2 px-4">{user.namee}</td>
+        <td className="py-2 px-4">{user.email}</td>
+        <td className="py-2 px-4">{user.phone}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
           </div>
         </div>
       </div>
