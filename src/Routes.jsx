@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "hooks/useAuthContext";
 
-import Home from "pages/Home";
+
 import LoginPage from "pages/Login";
 import RegisterPage from "pages/Register";
 import UsersPage from "pages/Users";
@@ -25,11 +25,11 @@ const ProjectRoutes = () => {
       <Router>
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route 
-              path="/login" 
+          <Route 
+              path="/" 
               element={!user ? <LoginPage /> : <Navigate to="/users" />} 
             />
+           
               <Route 
               path="/register" 
               element={!user ? <RegisterPage /> : <Navigate to="/users" />} 
