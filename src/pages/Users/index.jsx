@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Text } from "components";
 import UsersOpensidebar from "components/UsersOpensidebar";
 import { useLogout } from "hooks/useLogout";
@@ -7,17 +7,30 @@ import { useAuthContext } from "hooks/useAuthContext";
 const UsersPage = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
-
+  const [userData, setUserData] = useState([]);
 
   const { email: userEmail } = user;
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/user");
+      const data = await response.json();
+      setUserData(data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []); // Fetch data on component mount
 
   const handleClick = () => {
     logout();
   };
 
-
   return (
-    <div className="bg-gradient1  flex flex-col font-helveticaneue items-start justify-start mx-auto pb-[97px] md:pr-10 sm:pr-5 pr-[97px] w-full">
+    <div className="bg-gradient1 flex flex-col font-helveticaneue items-start justify-start mx-auto pb-[97px] md:pr-10 sm:pr-5 pr-[97px] w-full">
       <div className="flex md:flex-col flex-row gap-[55px] items-start justify-start mb-[204px] w-full">
         <UsersOpensidebar
           className="bg-gray-100 flex md:flex-1 flex-col items-end justify-start md:pl-10 sm:pl-5 pl-[62px] py-[62px] w-[23%] md:w-full"
@@ -48,7 +61,26 @@ const UsersPage = () => {
                 Logout
               </Button>
             </div>
-           
+            <table className="mt-5 w-full">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.namee}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phone}</td>
+               
+                    
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ const ProjectRoutes = () => {
               element={
                 <PrivateRoute
                   element={<UsersPage />}
-                  redirectTo="/login"
+                  redirectTo="/"
                 />
               }
             />
