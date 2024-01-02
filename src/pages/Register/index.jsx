@@ -129,7 +129,7 @@ const RegisterPage = () => {
             className="cursor-pointer font-bold leading-[normal] mt-4 text-base text-center text-light_blue_800_gray_900"
             shape="round"
             size="xs"
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/')}
           >
             Already have an account? Login
           </Button>

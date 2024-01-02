@@ -125,6 +125,21 @@ const navigate=useNavigate();
               {isLoading ? 'Logging In...' : 'Login'}
             </Button>
             {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+         
+            <div className="flex flex-row items-center justify-center mt-[15px] w-full">
+              <Text
+                className="text-base text-gray-700"
+                size="txtRobotoRegular16"
+              >
+                Don't have an account?
+              </Text>
+              <Button
+                className="cursor-pointer font-bold leading-[normal] min-w-[132px] text-center text-gray-700 text-sm"
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </Button>
+            </div>
     
           </div>
         </div>
